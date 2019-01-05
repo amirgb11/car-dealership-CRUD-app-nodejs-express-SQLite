@@ -3,7 +3,10 @@ module.exports = function(sequelize, Sequalize) {
         ticket_number : {
             type : Sequalize.CHAR(16),
             allowNull : false,
-            primaryKey : true
+            primaryKey : true , 
+            validate : {
+                notEmpty : true
+            }
         },
         date_received : {
             type : Sequalize.DATE,

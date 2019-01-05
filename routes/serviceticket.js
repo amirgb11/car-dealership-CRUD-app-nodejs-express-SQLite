@@ -3,14 +3,14 @@ var ServiceTicket = require('../models').ServiceTicket;
 var router = express.Router();
 
 // middleware
-var checkIDInput = function (req, res, next) {  
+var checkTNInput = function (req, res, next) {  
     if(isNaN(req.params.id)) {
         res.status(400).json('Invalid ID supplied');
     } else {
         next();
     }
 };
-var checkIDExist = function (req, res, next) {  
+var checkTNExist = function (req, res, next) {  
     //console.log('Check ID exist');
     ServiceTicket.count({ where: { id: req.params.id } }).then(count => {
         if (count != 0) {
@@ -40,14 +40,14 @@ router.post('/', function(req, res){
     });
 });
 
-router.get('/:id', [checkIDInput, checkIDExist], function(req, res){
+router.get('/:id', [checkTNInput, checkTNExist], function(req, res){
     ServiceTicket.findById(req.params.id).then(serviceticket => {
 
         res.status(200).json(serviceticket);
     });
 });
 
-router.put('/:id', [checkIDInput, checkIDExist], function(req, res){
+router.put('/:id', [checkTNInput, checkTNExist], function(req, res){
     ServiceTicket.update({
         ticket_number : req.body.ticket_number,
         date_received : req.body.date_received,
@@ -60,7 +60,7 @@ router.put('/:id', [checkIDInput, checkIDExist], function(req, res){
     });
 });
 
-router.delete('/:id', [checkIDInput, checkIDExist], function(req, res){
+router.delete('/:id', [checkTNInput, checkTNExist], function(req, res){
     ServiceTicket.destroy({
         where: { id: req.params.id }
     }).then(result => {

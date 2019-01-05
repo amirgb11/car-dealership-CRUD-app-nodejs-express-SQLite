@@ -2,17 +2,17 @@ var express = require('express');
 var Customer = require('../models').Customer;
 var router = express.Router();
 
-// middleware
-var checkIDInput = function (req, res, next) {  
-    if(isNaN(req.params.id)) {
+// mssndleware
+var checkSSNInput = function (req, res, next) {  
+    if(isNaN(req.params.ssn)) {
         res.status(400).json('Invalid ID supplied');
     } else {
         next();
     }
 };
-var checkIDExist = function (req, res, next) {  
+var checkSSNExit = function (req, res, next) {  
     //console.log('Check ID exist');
-    Customer.count({ where: { id: req.params.id } }).then(count => {
+    Customer.count({ where: { ssn: req.params.ssn } }).then(count => {
         if (count != 0) {
             next();
         } else {
@@ -46,14 +46,14 @@ router.post('/', function(req, res){
     });
 });
 
-router.get('/:id', [checkIDInput, checkIDExist], function(req, res){
-    Customer.findById(req.params.id).then(customer => {
+router.get('/:ssn', [checkSSNInput, checkSSNExit], function(req, res){
+    Customer.findById(req.params.ssn).then(customer => {
 
         res.status(200).json(customer);
     });
 });
 
-router.put('/:id', [checkIDInput, checkIDExist], function(req, res){
+router.put('/:ssn', [checkSSNInput, checkSSNExit], function(req, res){
     Customer.update({
         customer_number: req.body.customer_number,
         first_name: req.body.first_name,
@@ -66,15 +66,15 @@ router.put('/:id', [checkIDInput, checkIDExist], function(req, res){
         country : req.body.country,
         postal_code : req.body.postal_code
     },{
-        where: { id: req.params.id }
+        where: { ssn: req.params.ssn }
     }).then(result => {
         res.status(200).json(result);
     });
 });
 
-router.delete('/:id', [checkIDInput, checkIDExist], function(req, res){
+router.delete('/:ssn', [checkSSNInput, checkSSNExit], function(req, res){
     Customer.destroy({
-        where: { id: req.params.id }
+        where: { ssn: req.params.ssn }
     }).then(result => {
         res.status(200).json(result);
     });

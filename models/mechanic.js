@@ -5,8 +5,8 @@ module.exports = function(sequelize, Sequalize) {
             allowNull : false,
             primaryKey : true 
         },
-        first_name: Sequalize.VARCHAR(45),
-        last_name: Sequalize.VARCHAR(55)
+        first_name: Sequalize.CHAR(45),
+        last_name: Sequalize.CHAR(55)
     },{
         timestamps: false
     });

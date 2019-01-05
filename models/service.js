@@ -6,7 +6,7 @@ module.exports = function(sequelize, Sequalize) {
             primaryKey : true
         },
         service_name : {
-            type : Sequalize.VARCHAR(30),
+            type : Sequalize.CHAR(30),
             allowNull : true,
         },
         hourly_rate : {

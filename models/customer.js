@@ -5,8 +5,8 @@ module.exports = function(sequelize, Sequalize) {
             allowNull : false , 
             primaryKey : true
         },
-        first_name: Sequalize.VARCHAR(30),
-        last_name: Sequalize.VARCHAR(45),
+        first_name: Sequalize.CHAR(30),
+        last_name: Sequalize.CHAR(45),
         ssn: {
             type : Sequalize.CHAR(11),
             allowNull : false, 
@@ -16,7 +16,7 @@ module.exports = function(sequelize, Sequalize) {
             allowNull : false,
         },
         address : {
-            type : Sequalize.TEXT(100),
+            type : Sequalize.CHAR(40),
             allowNull : false,
         },
         city : {
@@ -32,7 +32,7 @@ module.exports = function(sequelize, Sequalize) {
             allowNull : false,
         },
         postal_code : {
-            type : Sequalize.VARCHAR(6),
+            type : Sequalize.CHAR(6),
             allowNull : false,
         },
 

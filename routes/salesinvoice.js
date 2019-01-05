@@ -3,16 +3,16 @@ var SalesInvoice = require('../models').SalesInvoice;
 var router = express.Router();
 
 // middleware
-var checkIDInput = function (req, res, next) {  
-    if(isNaN(req.params.id)) {
+var checkINInput = function (req, res, next) {  
+    if(isNaN(req.params.invoice_number)) {
         res.status(400).json('Invalid ID supplied');
     } else {
         next();
     }
 };
-var checkIDExist = function (req, res, next) {  
-    //console.log('Check ID exist');
-    SalesInvoice.count({ where: { id: req.params.id } }).then(count => {
+var checkINExist = function (req, res, next) {  
+    //console.log('Check invoice_number exist');
+    SalesInvoice.count({ where: { invoice_number: req.params.invoice_number } }).then(count => {
         if (count != 0) {
             next();
         } else {
@@ -38,27 +38,27 @@ router.post('/', function(req, res){
     });
 });
 
-router.get('/:id', [checkIDInput, checkIDExist], function(req, res){
-    SalesInvoice.findById(req.params.id).then(salesinvoice => {
+router.get('/:invoice_number', [checkINInput, checkINExist], function(req, res){
+    SalesInvoice.findById(req.params.invoice_number).then(salesinvoice => {
 
         res.status(200).json(salesinvoice);
     });
 });
 
-router.put('/:id', [checkIDInput, checkIDExist], function(req, res){
+router.put('/:invoice_number', [checkINInput, checkINExist], function(req, res){
     SalesInvoice.update({
         invoice_number : req.body.invoice_number,
         invoice_date : req.body.invoice_date
     },{
-        where: { id: req.params.id }
+        where: { invoice_number: req.params.invoice_number }
     }).then(result => {
         res.status(200).json(result);
     });
 });
 
-router.delete('/:id', [checkIDInput, checkIDExist], function(req, res){
+router.delete('/:invoice_number', [checkINInput, checkINExist], function(req, res){
     SalesInvoice.destroy({
-        where: { id: req.params.id }
+        where: { invoice_number: req.params.invoice_number }
     }).then(result => {
         res.status(200).json(result);
     });

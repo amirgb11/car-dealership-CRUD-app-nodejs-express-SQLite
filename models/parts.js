@@ -3,16 +3,19 @@ module.exports = function(sequelize, Sequalize) {
         part_number:{
             type : Sequalize.CHAR(20),
             allowNull : false , 
-            primaryKey : true
+            primaryKey : true,
+            validate : {
+                notEmpty : true
+            }
         },
         description : {
             type : Sequalize.TEXT(100)
         },
         purchase_price : {
-            type : Sequelize.DECIMAL(10, 2)
+            type : Sequalize.DECIMAL(10, 2)
         },
         retail_price : {
-            type : Sequelize.DECIMAL(10, 2)
+            type : Sequalize.DECIMAL(10, 2)
         }
 
     },{

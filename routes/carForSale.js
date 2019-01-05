@@ -3,16 +3,16 @@ var CarForSale = require('../models').CarForSale;
 var router = express.Router();
 
 // middleware
-var checkIDInput = function (req, res, next) {  
-    if(isNaN(req.params.id)) {
+var checkVINInput = function (req, res, next) {  
+    if(isNaN(req.params.VIN)) {
         res.status(400).json('Invalid ID supplied');
     } else {
         next();
     }
 };
-var checkIDExist = function (req, res, next) {  
+var checkVINExist = function (req, res, next) {  
     //console.log('Check ID exist');
-    CarForSale.count({ where: { id: req.params.id } }).then(count => {
+    CarForSale.count({ where: { VIN: req.params.VIN } }).then(count => {
         if (count != 0) {
             next();
         } else {
@@ -40,29 +40,29 @@ router.post('/', function(req, res){
     });
 });
 
-router.get('/:id', [checkIDInput, checkIDExist], function(req, res){
-    CarForSale.findById(req.params.id).then(carforsale => {
+router.get('/:VIN', [checkVINInput, checkVINExist], function(req, res){
+    CarForSale.findById(req.params.VIN).then(carforsale => {
 
         res.status(200).json(carforsale);
     });
 });
 
-router.put('/:id', [checkIDInput, checkIDExist], function(req, res){
+router.put('/:VIN', [checkVINInput, checkVINExist], function(req, res){
     CarForSale.update({
         VIN: req.body.VIN,
         model: req.body.model,
         company: req.body.company,
         color: req.body.color,
     },{
-        where: { id: req.params.id }
+        where: { VIN: req.params.VIN }
     }).then(result => {
         res.status(200).json(result);
     });
 });
 
-router.delete('/:id', [checkIDInput, checkIDExist], function(req, res){
+router.delete('/:VIN', [checkVINInput, checkVINExist], function(req, res){
     CarForSale.destroy({
-        where: { id: req.params.id }
+        where: { VIN: req.params.VIN }
     }).then(result => {
         res.status(200).json(result);
     });

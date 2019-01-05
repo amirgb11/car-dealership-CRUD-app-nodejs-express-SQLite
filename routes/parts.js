@@ -2,17 +2,17 @@ var express = require('express');
 var Parts = require('../models').Parts;
 var router = express.Router();
 
-// middleware
-var checkIDInput = function (req, res, next) {  
-    if(isNaN(req.params.id)) {
+// mpart_numberdleware
+var checkPNInput = function (req, res, next) {  
+    if(isNaN(req.params.part_number)) {
         res.status(400).json('Invalid ID supplied');
     } else {
         next();
     }
 };
-var checkIDExist = function (req, res, next) {  
+var checkPNExist = function (req, res, next) {  
     //console.log('Check ID exist');
-    Parts.count({ where: { id: req.params.id } }).then(count => {
+    Parts.count({ where: { part_number: req.params.part_number } }).then(count => {
         if (count != 0) {
             next();
         } else {
@@ -29,8 +29,10 @@ router.get('/', function(req, res){
 
 router.post('/', function(req, res){
     Parts.create({
-        invoice_number : req.body.invoice_number,
-        invoice_date : req.body.invoice_date
+        part_number : req.body.part_number,
+        description : req.body.description,
+        purchase_price : req.body.purchase_price,
+        retail_price : req.body.retail_price,
     }).then(parts => {
         res.status(200).json(parts);
     }).error(err => {
@@ -38,27 +40,29 @@ router.post('/', function(req, res){
     });
 });
 
-router.get('/:id', [checkIDInput, checkIDExist], function(req, res){
-    Parts.findById(req.params.id).then(parts => {
+router.get('/:part_number', [checkPNInput, checkPNExist], function(req, res){
+    Parts.findById(req.params.part_number).then(parts => {
 
         res.status(200).json(parts);
     });
 });
 
-router.put('/:id', [checkIDInput, checkIDExist], function(req, res){
+router.put('/:part_number', [checkPNInput, checkPNExist], function(req, res){
     Parts.update({
-        invoice_number : req.body.invoice_number,
-        invoice_date : req.body.invoice_date
+        part_number : req.body.part_number,
+        description : req.body.description,
+        purchase_price : req.body.purchase_price,
+        retail_price : req.body.retail_price,
     },{
-        where: { id: req.params.id }
+        where: { part_number: req.params.part_number }
     }).then(result => {
         res.status(200).json(result);
     });
 });
 
-router.delete('/:id', [checkIDInput, checkIDExist], function(req, res){
+router.delete('/:part_number', [checkPNInput, checkPNExist], function(req, res){
     Parts.destroy({
-        where: { id: req.params.id }
+        where: { part_number: req.params.part_number }
     }).then(result => {
         res.status(200).json(result);
     });
