@@ -1,0 +1,10 @@
+{
+    "development": {
+        "username": "root",
+        "password": null,
+        "database": "CarDealershipDB",
+        "host": "localhost",
+        "dialect": "sqlite",
+        "storage": "./data/CarDealershipDB.sqlite"
+    }
+}
