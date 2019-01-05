@@ -14,6 +14,9 @@ var carForSale = require('./routes/carForSale');
 var carWithOwner = require('./routes/carWithOwner');
 var customer = require('./routes/customer');
 var service = require('./routes/service');
+var salesinvoice = require('./routes/salesinvoice');
+var serviceticket = require('./routes/serviceticket');
+var parts = require('./routes/parts');
 
 
 models.sequelize.sync().then(function() {
@@ -36,6 +39,9 @@ app.use('/carforsale', carForSale);
 app.use('/careithowner', carWithOwner);
 app.use('/customer', customer);
 app.use('/service', service);
+app.use('/salesinvoice', salesinvoice);
+app.use('/serviceticket', serviceticket);
+app.use('/parts', parts);
 
 
 app.get('/', function(req, res){
