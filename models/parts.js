@@ -4,9 +4,6 @@ module.exports = function(sequelize, Sequalize) {
             type : Sequalize.CHAR(20),
             allowNull : false , 
             primaryKey : true,
-            validate : {
-                notEmpty : true
-            }
         },
         description : {
             type : Sequalize.TEXT(100)

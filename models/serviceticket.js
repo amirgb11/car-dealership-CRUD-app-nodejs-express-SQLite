@@ -4,9 +4,6 @@ module.exports = function(sequelize, Sequalize) {
             type : Sequalize.CHAR(16),
             allowNull : false,
             primaryKey : true , 
-            validate : {
-                notEmpty : true
-            }
         },
         date_received : {
             type : Sequalize.DATE,
