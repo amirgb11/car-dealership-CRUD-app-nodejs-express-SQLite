@@ -19,5 +19,10 @@ module.exports = function(sequelize, Sequalize) {
     },{
         timestamps: false
     });
+
+    ServiceTicketSchema.associate = (models) => {
+        models.ServiceTicket.belongsTo(models.CarWithOwner , { as : 'GotServiced'})
+    }
+
     return ServiceTicketSchema;
 }

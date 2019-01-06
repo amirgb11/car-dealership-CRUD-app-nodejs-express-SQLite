@@ -13,5 +13,12 @@ module.exports = function(sequelize, Sequalize) {
     },{
         timestamps: false
     });
+
+    SalesInvoiceSchema.associate = (models) => {
+        models.SalesInvoice.hasOne(models.SalesPerson , { as : 'SoldBy'})
+        models.SalesInvoice.belongsTo(models.Customer , { as : 'SoldTo'})
+    }
+
+
     return SalesInvoiceSchema;
 }

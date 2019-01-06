@@ -39,5 +39,11 @@ module.exports = function(sequelize, Sequalize) {
     },{
         timestamps: false
     });
+
+        CustomerSchema.associate = (models) => {
+            models.Customer.hasMany(models.SalesInvoice , { as : 'SoldTo'})
+            models.Customer.hasMany(models.ServiceTicket , { as : 'ReceivedService'})
+        }
+
     return CustomerSchema;
 }

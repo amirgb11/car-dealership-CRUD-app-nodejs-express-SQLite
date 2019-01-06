@@ -11,5 +11,6 @@ module.exports = function(sequelize, Sequalize) {
     },{
         timestamps: false
     });
+
     return CarWithOwnerSchema;
 }

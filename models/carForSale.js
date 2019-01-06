@@ -12,5 +12,12 @@ module.exports = function(sequelize, Sequalize) {
     },{
         timestamps: false
     });
+
+    CarForSaleSchema.associate = (models) => {
+        models.CarForSale.hasOne(models.SalesInvoice , { as : 'SoldCar'})
+    }
+
+
+
     return CarForSaleSchema;
 }
