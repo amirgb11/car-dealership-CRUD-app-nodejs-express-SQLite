@@ -1,36 +1,37 @@
 module.exports = function(sequelize, Sequalize) {
-    var PartsUsedSchema = sequelize.define("PartsUsed", {
-        part_number:{
+    var SoldBySchema = sequelize.define("SoldBy", {
+        invoice_number:{
             type : Sequalize.CHAR(20),
             allowNull : false , 
             primaryKey : true ,
             references: {
                 // This is a reference to another model
-                model: Parts,
+                model: SalesInvoice,
                 // This is the column name of the referenced model
-                key: 'part_number',
+                key: 'invoice_number',
             }
         },
-        ticket_number : {
-            type : Sequalize.INTEGER,
+        ssn: {
+            type : Sequalize.CHAR(10),
             allowNull : false,
-            primaryKey : true ,
+           // foreign key
             references: {
                 // This is a reference to another model
-                model: ServiceTicket,
+                model: SalesPerson,
                 // This is the column name of the referenced model
-                key: 'ticket_number',
-            } 
-        },
-        number_used : {
-            type : Sequalize.INTEGER
-        },
-        price : {
-            type : Sequalize.INTEGER
-        },
+                key: 'ssn',
+            }
+        }
 
     },{
         timestamps: false
     });
-    return PartsUsedSchema;
+
+    // SoldBySchema.associate = (models) => {
+    //     models.SoldBy.hasOne(models.SalesPerson , { as : 'SoldBy'})
+    //     models.SoldBy.belongsTo(models.Customer , { as : 'SoldTo'})
+    // }
+
+
+    return SoldBySchema;
 }

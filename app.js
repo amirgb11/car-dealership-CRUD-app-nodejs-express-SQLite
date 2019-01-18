@@ -17,6 +17,8 @@ var service = require('./routes/service');
 var salesinvoice = require('./routes/salesinvoice');
 var serviceticket = require('./routes/serviceticket');
 var parts = require('./routes/parts');
+var partsused = require('./routes/partsused');
+var soldby = require('./routes/soldby');
 
 
 models.sequelize.sync().then(function() {
@@ -42,6 +44,8 @@ app.use('/service', service);
 app.use('/salesinvoice', salesinvoice);
 app.use('/serviceticket', serviceticket);
 app.use('/parts', parts);
+app.use('/partsused', partsused);
+app.use('/soldby', soldby);
 
 
 app.get('/', function(req, res){
