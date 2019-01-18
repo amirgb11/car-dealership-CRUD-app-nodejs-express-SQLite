@@ -6,7 +6,7 @@ module.exports = function(sequelize, Sequalize) {
             primaryKey : true ,
             references: {
                 // This is a reference to another model
-                model: SalesInvoice,
+                model: 'SalesInvoice',
                 // This is the column name of the referenced model
                 key: 'invoice_number',
             }
@@ -17,7 +17,7 @@ module.exports = function(sequelize, Sequalize) {
            // foreign key
             references: {
                 // This is a reference to another model
-                model: SalesPerson,
+                model: 'SalesPerson',
                 // This is the column name of the referenced model
                 key: 'ssn',
             }

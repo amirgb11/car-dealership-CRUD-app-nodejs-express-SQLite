@@ -7,7 +7,7 @@ module.exports = function(sequelize, Sequalize) {
             // foreign key
             references: {
                 // This is a reference to another model
-                model: Car,
+                model: 'Car',
                 // This is the column name of the referenced model
                 key: 'VIN',
             }
