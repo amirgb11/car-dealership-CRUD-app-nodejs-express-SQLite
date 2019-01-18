@@ -1,7 +1,7 @@
 module.exports = function(sequelize, Sequalize) {
     var ServiceTicketSchema = sequelize.define("ServiceTicket", {
         ticket_number : {
-            type : Sequalize.CHAR(16),
+            type : Sequalize.INTEGER,
             allowNull : false,
             primaryKey : true , 
         },
