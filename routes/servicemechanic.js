@@ -1,5 +1,5 @@
 var express = require('express');
-var ServiceMechanic = require('../models').ServiceMechanic;
+var ServiceMechanic = require('../models').ServiceMechanics;
 var router = express.Router();
 
 // middleware

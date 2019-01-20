@@ -1,14 +1,14 @@
 module.exports = function(sequelize, Sequalize) {
-    var ServiceMechanicSchema = sequelize.define("ServiceMechanic", {
+    var ServiceMechanicSchema = sequelize.define("ServiceMechanics", {
         service_id : {
             type : Sequalize.CHAR(16),
             allowNull : false,
                 // foreign key
                 references: {
                     // This is a reference to another model
-                    model: 'Employee',
+                    model: 'Services',
                     // This is the column name of the referenced model
-                    key: 'ssn',
+                    key: 'service_id',
                 }
         },
         ssn : {
@@ -18,7 +18,7 @@ module.exports = function(sequelize, Sequalize) {
             // foreign key
             references: {
                 // This is a reference to another model
-                model: 'Mechanic',
+                model: 'Mechanics',
                 // This is the column name of the referenced model
                 key: 'ssn',
             }

@@ -1,5 +1,5 @@
 module.exports = function(sequelize, Sequalize) {
-    var CarWithOwnerSchema = sequelize.define("CarWithOwner", {
+    var CarWithOwnerSchema = sequelize.define("CarWithOwners", {
         VIN:{
             type : Sequalize.CHAR(16),
             allowNull : false,
@@ -7,7 +7,7 @@ module.exports = function(sequelize, Sequalize) {
             // foreign key
             references: {
                 // This is a reference to another model
-                model: 'Car',
+                model: 'Cars',
                 // This is the column name of the referenced model
                 key: 'VIN',
             }

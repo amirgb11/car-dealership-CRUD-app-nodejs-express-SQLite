@@ -1,5 +1,5 @@
 var express = require('express');
-var SoldBy = require('../models').SoldBy;
+var SoldBy = require('../models').SoldBies;
 var router = express.Router();
 
 // middleware

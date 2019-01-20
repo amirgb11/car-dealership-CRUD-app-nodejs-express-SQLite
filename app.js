@@ -22,7 +22,7 @@ var soldby = require('./routes/soldby');
 var servicemechanic = require('./routes/servicemechanic');
 
 
-models.sequelize.sync().then(function() {
+models.sequelize.sync({force: false}).then(function() {
     console.log('connected to database')
 }).catch(function(err) {
     console.log(err)

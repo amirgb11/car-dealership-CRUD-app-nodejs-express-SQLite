@@ -1,5 +1,5 @@
 module.exports = function(sequelize, Sequalize) {
-    var ServiceTicketSchema = sequelize.define("ServiceTicket", {
+    var ServiceTicketSchema = sequelize.define("ServiceTickets", {
         ticket_number : {
             type : Sequalize.INTEGER,
             allowNull : false,
@@ -21,7 +21,7 @@ module.exports = function(sequelize, Sequalize) {
     });
 
     ServiceTicketSchema.associate = (models) => {
-        models.ServiceTicket.belongsTo(models.CarWithOwner , { as : 'GotServiced'})
+        models.ServiceTickets.belongsTo(models.CarWithOwners , { as : 'GotServiced'})
     }
 
     return ServiceTicketSchema;

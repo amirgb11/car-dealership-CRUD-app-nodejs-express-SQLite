@@ -1,5 +1,5 @@
 module.exports = function(sequelize, Sequalize) {
-    var CustomerSchema = sequelize.define("Customer", {
+    var CustomerSchema = sequelize.define("Customers", {
         customer_number:{
             type : Sequalize.CHAR(20),
             allowNull : false , 
@@ -41,8 +41,8 @@ module.exports = function(sequelize, Sequalize) {
     });
 
         CustomerSchema.associate = (models) => {
-            models.Customer.hasMany(models.SalesInvoice , { as : 'SoldTo'})
-            models.Customer.hasMany(models.ServiceTicket , { as : 'ReceivedService'})
+            models.Customers.hasMany(models.SalesInvoices , { as : 'SoldTo'})
+            models.Customers.hasMany(models.ServiceTickets , { as : 'ReceivedService'})
         }
 
     return CustomerSchema;

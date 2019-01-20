@@ -1,5 +1,5 @@
 module.exports = function(sequelize, Sequalize) {
-    var CarSchema = sequelize.define("Car", {
+    var CarSchema = sequelize.define("Cars", {
         VIN:{
             type : Sequalize.CHAR(16),
             allowNull : false,
