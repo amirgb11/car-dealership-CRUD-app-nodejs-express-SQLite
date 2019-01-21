@@ -1,5 +1,5 @@
 module.exports = function(sequelize, Sequalize) {
-    var EmployeeSchema = sequelize.define("Employee", {
+    var EmployeeSchema = sequelize.define("Employees", {
         ssn: {
             type : Sequalize.CHAR(10),
             allowNull : false,

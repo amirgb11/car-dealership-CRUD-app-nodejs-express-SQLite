@@ -1,5 +1,5 @@
 var express = require('express');
-var PartsUsed = require('../models').PartsUsed;
+var PartsUseds = require('../models').PartsUseds;
 var router = express.Router();
 
 // mpart_numberdleware
@@ -12,7 +12,7 @@ var checkPNInput = function (req, res, next) {
 };
 var checkPNExist = function (req, res, next) {  
     //console.log('Check ID exist');
-    PartsUsed.count({ where: { part_number: req.params.part_number } }).then(count => {
+    PartsUseds.count({ where: { part_number: req.params.part_number } }).then(count => {
         if (count != 0) {
             next();
         } else {
@@ -22,13 +22,13 @@ var checkPNExist = function (req, res, next) {
 };
 
 router.get('/', function(req, res){
-    PartsUsed.findAll().then(partsused => {
+    PartsUseds.findAll().then(partsused => {
         res.status(200).json(partsused);
     });
 });
 
 router.post('/', function(req, res){
-    PartsUsed.create({
+    PartsUseds.create({
         part_number : req.body.part_number,
         ticket_number : req.body.ticket_number,
         number_used : req.body.number_used,
@@ -41,14 +41,14 @@ router.post('/', function(req, res){
 });
 
 router.get('/:part_number', [checkPNInput, checkPNExist], function(req, res){
-    PartsUsed.findById(req.params.part_number).then(partsused => {
+    PartsUseds.findById(req.params.part_number).then(partsused => {
 
         res.status(200).json(partsused);
     });
 });
 
 router.put('/:part_number', [checkPNInput, checkPNExist], function(req, res){
-    PartsUsed.update({
+    PartsUseds.update({
         part_number : req.body.part_number,
         ticket_number : req.body.ticket_number,
         number_used : req.body.number_used,
@@ -61,7 +61,7 @@ router.put('/:part_number', [checkPNInput, checkPNExist], function(req, res){
 });
 
 router.delete('/:part_number', [checkPNInput, checkPNExist], function(req, res){
-    PartsUsed.destroy({
+    PartsUseds.destroy({
         where: { part_number: req.params.part_number }
     }).then(result => {
         res.status(200).json(result);

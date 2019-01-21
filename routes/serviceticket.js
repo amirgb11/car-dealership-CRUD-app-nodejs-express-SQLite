@@ -1,5 +1,5 @@
 var express = require('express');
-var ServiceTicket = require('../models').ServiceTicket;
+var ServiceTicket = require('../models').ServiceTickets;
 var router = express.Router();
 
 // middleware

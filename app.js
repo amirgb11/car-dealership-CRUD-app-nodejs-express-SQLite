@@ -19,9 +19,10 @@ var serviceticket = require('./routes/serviceticket');
 var parts = require('./routes/parts');
 var partsused = require('./routes/partsused');
 var soldby = require('./routes/soldby');
+var servicemechanic = require('./routes/servicemechanic');
 
 
-models.sequelize.sync().then(function() {
+models.sequelize.sync({force: false}).then(function() {
     console.log('connected to database')
 }).catch(function(err) {
     console.log(err)
@@ -46,6 +47,7 @@ app.use('/serviceticket', serviceticket);
 app.use('/parts', parts);
 app.use('/partsused', partsused);
 app.use('/soldby', soldby);
+app.use('/servicemechanic', servicemechanic);
 
 
 app.get('/', function(req, res){

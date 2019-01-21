@@ -1,12 +1,12 @@
 module.exports = function(sequelize, Sequalize) {
-    var SoldBySchema = sequelize.define("SoldBy", {
+    var SoldBySchema = sequelize.define("SoldBies", {
         invoice_number:{
             type : Sequalize.CHAR(20),
             allowNull : false , 
             primaryKey : true ,
             references: {
                 // This is a reference to another model
-                model: SalesInvoice,
+                model: 'SalesInvoices',
                 // This is the column name of the referenced model
                 key: 'invoice_number',
             }
@@ -17,7 +17,7 @@ module.exports = function(sequelize, Sequalize) {
            // foreign key
             references: {
                 // This is a reference to another model
-                model: SalesPerson,
+                model: 'SalesPeople',
                 // This is the column name of the referenced model
                 key: 'ssn',
             }
@@ -26,11 +26,6 @@ module.exports = function(sequelize, Sequalize) {
     },{
         timestamps: false
     });
-
-    // SoldBySchema.associate = (models) => {
-    //     models.SoldBy.hasOne(models.SalesPerson , { as : 'SoldBy'})
-    //     models.SoldBy.belongsTo(models.Customer , { as : 'SoldTo'})
-    // }
 
 
     return SoldBySchema;

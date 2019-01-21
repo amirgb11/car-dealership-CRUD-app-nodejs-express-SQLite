@@ -1,5 +1,5 @@
 module.exports = function(sequelize, Sequalize) {
-    var MechanicSchema = sequelize.define("Mechanic", {
+    var MechanicSchema = sequelize.define("Mechanics", {
         ssn: {
             type : Sequalize.CHAR(10),
             allowNull : false,
@@ -7,7 +7,7 @@ module.exports = function(sequelize, Sequalize) {
             // foreign key
             references: {
                 // This is a reference to another model
-                model: Employee,
+                model: 'Employees',
                 // This is the column name of the referenced model
                 key: 'ssn',
             }

@@ -1,5 +1,5 @@
 module.exports = function(sequelize, Sequalize) {
-    var ServiceSchema = sequelize.define("Service", {
+    var ServiceSchema = sequelize.define("Services", {
         service_id : {
             type : Sequalize.CHAR(16),
             allowNull : false,
