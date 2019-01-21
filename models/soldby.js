@@ -27,11 +27,6 @@ module.exports = function(sequelize, Sequalize) {
         timestamps: false
     });
 
-    // SoldBySchema.associate = (models) => {
-    //     models.SoldBy.hasOne(models.SalesPerson , { as : 'SoldBy'})
-    //     models.SoldBy.belongsTo(models.Customer , { as : 'SoldTo'})
-    // }
-
 
     return SoldBySchema;
 }

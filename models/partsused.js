@@ -10,7 +10,7 @@ module.exports = function(sequelize, Sequalize) {
                 // This is the column name of the referenced model
                 key: 'part_number',
             }
-        },
+        }, 
         ticket_number : {
             type : Sequalize.INTEGER,
             allowNull : false,

@@ -7,7 +7,7 @@ module.exports = function(sequelize, Sequalize) {
                 references: {
                     // This is a reference to another model
                     model: 'Services',
-                    // This is the column name of the referenced model
+                    // This  is the column name of the referenced model
                     key: 'service_id',
                 }
         },

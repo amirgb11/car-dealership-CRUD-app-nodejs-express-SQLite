@@ -1,5 +1,5 @@
 var express = require('express');
-var Mechanic = require('../models').Mechanic;
+var Mechanic = require('../models').Mechanics;
 var router = express.Router();
 
 // mssndleware

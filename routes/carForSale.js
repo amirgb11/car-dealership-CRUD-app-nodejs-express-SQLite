@@ -1,5 +1,5 @@
 var express = require('express');
-var CarForSale = require('../models').CarForSale;
+var CarForSale = require('../models').CarForSales;
 var router = express.Router();
 
 // middleware
