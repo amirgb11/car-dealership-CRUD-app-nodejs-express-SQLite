@@ -1,5 +1,5 @@
 var express = require('express');
-var Employee = require('../models').Employee;
+var Employee = require('../models').Employees;
 var router = express.Router();
 
 // middleware

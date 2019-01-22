@@ -12,8 +12,24 @@ module.exports = function(sequelize, Sequalize) {
                 key: 'ssn',
             }
         },
-        first_name: Sequalize.CHAR(45),
-        last_name: Sequalize.CHAR(55)
+        first_name: {
+            type : Sequalize.CHAR(45) , 
+            references: {
+                // This is a reference to another model
+                model: 'Employees',
+                // This is the column name of the referenced model
+                key: 'first_name',
+            }
+        },
+        last_name: {
+            type : Sequalize.CHAR(45) , 
+            references: {
+                // This is a reference to another model
+                model: 'Employees',
+                // This is the column name of the referenced model
+                key: 'last_name',
+            }
+        }
     },{
         timestamps: false
     });

@@ -1,5 +1,5 @@
 var express = require('express');
-var SalesInvoice = require('../models').SalesInvoice;
+var SalesInvoice = require('../models').SalesInvoices;
 var router = express.Router();
 
 // middleware
