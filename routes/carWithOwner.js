@@ -1,5 +1,5 @@
 var express = require('express');
-var CarWithOwner = require('../models').CarWithOwner;
+var CarWithOwner = require('../models').CarWithOwners;
 var router = express.Router();
 
 // mVINdleware

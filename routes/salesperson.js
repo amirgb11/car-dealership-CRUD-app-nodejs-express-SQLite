@@ -1,5 +1,5 @@
 var express = require('express');
-var SalesPerson = require('../models').SalesPerson;
+var SalesPerson = require('../models').SalesPeople;
 var router = express.Router();
 
 // middleware

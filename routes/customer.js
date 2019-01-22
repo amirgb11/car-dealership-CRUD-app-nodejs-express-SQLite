@@ -1,5 +1,5 @@
 var express = require('express');
-var Customer = require('../models').Customer;
+var Customer = require('../models').Customers;
 var router = express.Router();
 
 // mssndleware
